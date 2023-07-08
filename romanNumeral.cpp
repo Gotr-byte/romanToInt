@@ -1,30 +1,34 @@
 #include "romanNumeral.hpp"
 //c++ main.cpp romanNumeral.cpp -o convertRomanToInt
 
-RomanNumeral::RomanNumeral(char *toTranslate){
+int RomanNumeral::calculateIntegerValue(){
 	int i = 0;
-	
-	this->integerValue = 0;
-	this->romanInterpretation = toTranslate;
-
-	this->romanNumerals['I'] = 1;
-	this->romanNumerals['V'] = 5;
-	this->romanNumerals['X'] = 10;
-	this->romanNumerals['L'] = 50;
-	this->romanNumerals['C'] = 100;
-	this->romanNumerals['D'] = 500;
-	this->romanNumerals['M'] = 1000;
-
-	while (toTranslate[i]){
-		if(toTranslate[i + 1] && romanNumerals[toTranslate[i]] < \
-		romanNumerals[toTranslate[i + 1]]){
-			this->integerValue = this->integerValue - romanNumerals[toTranslate[i]];
+	int integerValueTmp;
+	while (romanInterpretation[i]){
+		if(romanInterpretation[i + 1] && romanNumerals[romanInterpretation[i]] < \
+		romanNumerals[romanInterpretation[i + 1]]){
+			integerValueTmp = integerValueTmp - romanNumerals[romanInterpretation[i]];
 		}
 		else{
-			this->integerValue = this->integerValue + romanNumerals[toTranslate[i]];
+			integerValueTmp = integerValueTmp + romanNumerals[romanInterpretation[i]];
 		}
 		i++;
 	}
+	return integerValueTmp;
+}
+
+RomanNumeral::RomanNumeral(char *toTranslate){
+	integerValue = 0;
+	romanInterpretation = toTranslate;
+	romanNumerals['I'] = 1;
+	romanNumerals['V'] = 5;
+	romanNumerals['X'] = 10;
+	romanNumerals['L'] = 50;
+	romanNumerals['C'] = 100;
+	romanNumerals['D'] = 500;
+	romanNumerals['M'] = 1000;
+	integerValue = calculateIntegerValue();
+	
 }
 
 RomanNumeral::~RomanNumeral(){}

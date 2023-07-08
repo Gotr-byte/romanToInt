@@ -1,4 +1,4 @@
-#include "romanNumeral.hpp"
+#include "RomanNumber.hpp"
 using std::string;
 
 /*
@@ -6,7 +6,7 @@ Function the returns integer when a string of a roman number is entered/
 
 To compile enter command:
 
-c++ main.cpp romanNumeral.cpp -o convertRomanToInt
+c++ main.cpp RomanNumber.cpp -o convertRomanToInt
 
 in order to run:
 
@@ -19,9 +19,9 @@ example:
 
 int romanToInt(string roman)
 {
-	RomanNumeral romanNumeral(roman);
-	romanNumeral.printValues();
-	return (romanNumeral.getIntValue());
+	RomanNumber RomanNumber(roman);
+	RomanNumber.printValues();
+	return (RomanNumber.getIntValue());
 }
 
 int main(int argc, char **argv)

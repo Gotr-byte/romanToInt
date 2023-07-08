@@ -7,11 +7,11 @@ using std::cout;
 using std::map;
 using std::string;
 
-class RomanNumeral
+class RomanNumber
 {
 public:
-	RomanNumeral(string toTranslate);
-	~RomanNumeral();
+	RomanNumber(string toTranslate);
+	~RomanNumber();
 
 	void createNumerals();
 	void calculateIntegerValue();
@@ -20,7 +20,7 @@ public:
 	void printValues();
 
 private:
-	map<char, int> romanNumerals;
+	map<char, int> RomanNumbers;
 	int integerValue;
 	string romanInterpretation;
 };

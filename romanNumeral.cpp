@@ -1,25 +1,15 @@
 #include "romanNumeral.hpp"
-//c++ main.cpp romanNumeral.cpp -o convertRomanToInt
 
-int RomanNumeral::calculateIntegerValue(){
-	int i = 0;
-	int integerValueTmp;
-	while (romanInterpretation[i]){
-		if(romanInterpretation[i + 1] && romanNumerals[romanInterpretation[i]] < \
-		romanNumerals[romanInterpretation[i + 1]]){
-			integerValueTmp = integerValueTmp - romanNumerals[romanInterpretation[i]];
-		}
-		else{
-			integerValueTmp = integerValueTmp + romanNumerals[romanInterpretation[i]];
-		}
-		i++;
-	}
-	return integerValueTmp;
+RomanNumeral::RomanNumeral(string toTranslate) : romanInterpretation(toTranslate), integerValue(0)
+{
+	createNumerals();
+	calculateIntegerValue();
 }
 
-RomanNumeral::RomanNumeral(char *toTranslate){
-	integerValue = 0;
-	romanInterpretation = toTranslate;
+RomanNumeral::~RomanNumeral() {}
+
+void RomanNumeral::createNumerals()
+{
 	romanNumerals['I'] = 1;
 	romanNumerals['V'] = 5;
 	romanNumerals['X'] = 10;
@@ -27,16 +17,39 @@ RomanNumeral::RomanNumeral(char *toTranslate){
 	romanNumerals['C'] = 100;
 	romanNumerals['D'] = 500;
 	romanNumerals['M'] = 1000;
-	integerValue = calculateIntegerValue();
-	
 }
 
-RomanNumeral::~RomanNumeral(){}
-
-int RomanNumeral::getIntValue(){
-	return(this->integerValue);
+void RomanNumeral::calculateIntegerValue()
+{
+	int i = 0;
+	while (romanInterpretation[i])
+	{
+		if (romanInterpretation[i + 1] &&
+			romanNumerals[romanInterpretation[i]] <
+				romanNumerals[romanInterpretation[i + 1]])
+		{
+			integerValue = integerValue - romanNumerals[romanInterpretation[i]];
+		}
+		else
+		{
+			integerValue = integerValue + romanNumerals[romanInterpretation[i]];
+		}
+		i++;
+	}
 }
 
-char* RomanNumeral::getRomanInterpretation(){
-	return(this->romanInterpretation);
+int RomanNumeral::getIntValue()
+{
+	return (integerValue);
+}
+
+string RomanNumeral::getRomanInterpretation()
+{
+	return (romanInterpretation);
+}
+
+void RomanNumeral::printValues()
+{
+	cout << "Integer value of " << getRomanInterpretation() << \
+	" is "<< getIntValue() << "\n";
 }

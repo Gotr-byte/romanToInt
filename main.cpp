@@ -1,19 +1,33 @@
 #include "romanNumeral.hpp"
+using std::string;
 
-// c++ main.cpp romanNumeral.cpp -o convertRomanToInt
+/*
+Function the returns integer when a string of a roman number is entered/
 
-int romanToInt(std::string roman)
+To compile enter command:
+
+c++ main.cpp romanNumeral.cpp -o convertRomanToInt
+
+in order to run:
+
+./convertRomanToInt <ROMAN_NUMBER>
+
+example:
+
+./convertRomanToInt XXI
+*/
+
+int romanToInt(string roman)
 {
-	char* cRoman = (char *)roman.c_str();
-	RomanNumeral romanNumeral(cRoman);
-	std::cout << "Integer value of " << romanNumeral.getRomanInterpretation() << \
-	" is "<< romanNumeral.getIntValue() << std::endl;
+	RomanNumeral romanNumeral(roman);
+	romanNumeral.printValues();
 	return (romanNumeral.getIntValue());
 }
 
-int main (int argc, char **argv){
+int main(int argc, char **argv)
+{
 	const char *cRoman = argv[1];
-	std::string roman(cRoman);
+	string roman(cRoman);
 	int result = romanToInt(roman);
 	return (0);
 }

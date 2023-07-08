@@ -3,18 +3,24 @@
 #include <iostream>
 #include <string>
 
+using std::cout;
+using std::map;
+using std::string;
+
 class RomanNumeral
 {
 public:
-	RomanNumeral(char *toTranslate);
+	RomanNumeral(string toTranslate);
 	~RomanNumeral();
 
+	void createNumerals();
+	void calculateIntegerValue();
 	int getIntValue();
-	char *getRomanInterpretation();
-	int calculateIntegerValue();
+	string getRomanInterpretation();
+	void printValues();
 
 private:
-	std::map<char, int> romanNumerals;
+	map<char, int> romanNumerals;
 	int integerValue;
-	char *romanInterpretation;
+	string romanInterpretation;
 };

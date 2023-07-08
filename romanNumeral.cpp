@@ -3,6 +3,7 @@
 
 RomanNumeral::RomanNumeral(char *toTranslate){
 	int i = 0;
+	
 	this->integerValue = 0;
 	this->romanInterpretation = toTranslate;
 

@@ -48,13 +48,13 @@ int RomanNumber::getIntValue()
 	return (integerValue);
 }
 
-string RomanNumber::getromanValue()
+string RomanNumber::getRomanValue()
 {
 	return (romanValue);
 }
 
 void RomanNumber::printValues()
 {
-	cout << "Integer value of " << getromanValue() << \
+	cout << "Integer value of " << getRomanValue() << \
 	" is "<< getIntValue() << "\n";
 }

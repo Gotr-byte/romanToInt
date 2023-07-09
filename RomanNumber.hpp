@@ -16,7 +16,7 @@ public:
 	void createDecodeMap();
 	void calculateIntegerValue();
 	int getIntValue();
-	string getromanValue();
+	string getRomanValue();
 	void printValues();
 	bool nextIsLarger(int i );
 

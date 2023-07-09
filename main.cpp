@@ -19,15 +19,14 @@ example:
 
 int romanToInt(string roman)
 {
-	RomanNumber RomanNumber(roman);
-	RomanNumber.printValues();
-	return (RomanNumber.getIntValue());
+	RomanNumber romanNumber(roman);
+	romanNumber.printValues();
+	return (romanNumber.getIntValue());
 }
 
 int main(int argc, char **argv)
 {
-	const char *cRoman = argv[1];
-	string roman(cRoman);
+	string roman((const char*)argv[1]);
 	int result = romanToInt(roman);
 	return (0);
 }

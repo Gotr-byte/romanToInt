@@ -13,14 +13,15 @@ public:
 	RomanNumber(string toTranslate);
 	~RomanNumber();
 
-	void createNumerals();
+	void createDecodeMap();
 	void calculateIntegerValue();
 	int getIntValue();
-	string getRomanInterpretation();
+	string getromanValue();
 	void printValues();
+	bool nextIsLarger(int i );
 
 private:
-	map<char, int> RomanNumbers;
+	map<char, int> romanNumbers;
 	int integerValue;
-	string romanInterpretation;
+	string romanValue;
 };

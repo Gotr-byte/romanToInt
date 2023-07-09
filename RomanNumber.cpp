@@ -1,38 +1,43 @@
 #include "RomanNumber.hpp"
 
-RomanNumber::RomanNumber(string toTranslate) : romanInterpretation(toTranslate), integerValue(0)
+RomanNumber::RomanNumber(string toTranslate) : romanValue(toTranslate), integerValue(0)
 {
-	createNumerals();
+	createDecodeMap();
 	calculateIntegerValue();
 }
 
 RomanNumber::~RomanNumber() {}
 
-void RomanNumber::createNumerals()
+void RomanNumber::createDecodeMap()
 {
-	RomanNumbers['I'] = 1;
-	RomanNumbers['V'] = 5;
-	RomanNumbers['X'] = 10;
-	RomanNumbers['L'] = 50;
-	RomanNumbers['C'] = 100;
-	RomanNumbers['D'] = 500;
-	RomanNumbers['M'] = 1000;
+	romanNumbers['I'] = 1;
+	romanNumbers['V'] = 5;
+	romanNumbers['X'] = 10;
+	romanNumbers['L'] = 50;
+	romanNumbers['C'] = 100;
+	romanNumbers['D'] = 500;
+	romanNumbers['M'] = 1000;
+}
+
+bool RomanNumber::nextIsLarger(int i )
+{
+	return (romanValue[i + 1] &&
+			romanNumbers[romanValue[i]] <
+				romanNumbers[romanValue[i + 1]]);
 }
 
 void RomanNumber::calculateIntegerValue()
 {
 	int i = 0;
-	while (romanInterpretation[i])
+	while (romanValue[i])
 	{
-		if (romanInterpretation[i + 1] &&
-			RomanNumbers[romanInterpretation[i]] <
-				RomanNumbers[romanInterpretation[i + 1]])
+		if(nextIsLarger(i))
 		{
-			integerValue = integerValue - RomanNumbers[romanInterpretation[i]];
+			integerValue = integerValue - romanNumbers[romanValue[i]];
 		}
 		else
 		{
-			integerValue = integerValue + RomanNumbers[romanInterpretation[i]];
+			integerValue = integerValue + romanNumbers[romanValue[i]];
 		}
 		i++;
 	}
@@ -43,13 +48,13 @@ int RomanNumber::getIntValue()
 	return (integerValue);
 }
 
-string RomanNumber::getRomanInterpretation()
+string RomanNumber::getromanValue()
 {
-	return (romanInterpretation);
+	return (romanValue);
 }
 
 void RomanNumber::printValues()
 {
-	cout << "Integer value of " << getRomanInterpretation() << \
+	cout << "Integer value of " << getromanValue() << \
 	" is "<< getIntValue() << "\n";
 }
